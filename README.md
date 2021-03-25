@@ -13,10 +13,10 @@
   <a href="https://github.com/ctinnil/Eclair/pulls">
       <img src="https://img.shields.io/badge/contributions-welcome-brightgreen" alt="Contributing">
   </a>
-  <a href="https://www.apple.com/macos/catalina/https://github.com/ctinnil/Eclair/pulls">
+  <a href="https://www.apple.com/macos/big-sur/">
       <img src="https://img.shields.io/badge/OS-macOS-brightgreen" alt="OS">
   </a>
-  <a href="https://twitter.com/intent/tweet?text=Eclair+-+macOS+framework+for+AI+research+and+experimentation&amp;url=https%3A%2F%2Fgithub.com%2Fctinnil%2FEclair.gite&amp;via=ctinnil">
+  <a href="https://twitter.com/intent/tweet?text=Eclair+-+macOS+framework+for+AI+research+and+experimentation&amp;url=https%3A%2F%2Fgithub.com%2Fctinnil%2FEclair.git&amp;via=ctinnil">
       <img src="https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Fctinnil%2FEclair.git" alt="Tweet">
   </a>
 </p>
