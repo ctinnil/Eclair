@@ -34,10 +34,10 @@ cat << EOF
         ////////  /////  ///  //////// // ///
 EOF
 
-# filename: badseed_conf.sh
+# filename: conf.sh
 echo "\$0: $0"
 
-# get xOS version
+# get macOS version
 sw_vers -productVersion
 
 # turn firewall on
@@ -50,7 +50,7 @@ sudo softwareupdate -ia --verbose
 xcode-select --install
 xcode-select -p
 
-sudo spctl --master-disable ## you may want to reenable this option after using burp and zap for the first time -- >> sudo spctl --master-enable
+#sudo spctl --master-disable ## you may want to reenable this option after using burp and zap for the first time -- >> sudo spctl --master-enable
 
 # detects if Homebrew is istalled
 which -s brew
