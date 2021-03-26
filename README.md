@@ -38,7 +38,7 @@ Installation
 
 ``` sh
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" # to install Homebrew
-brew install git # or install git through the system's command line tool
+brew install git # or install git some other way 
 git clone https://github.com/ctinnil/Eclair.git
 cd Eclair
 sudo chmod +x conf.sh
