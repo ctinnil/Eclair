@@ -50,61 +50,138 @@ sudo softwareupdate -ia --verbose
 xcode-select --install
 xcode-select -p
 
-#sudo spctl --master-disable ## you may want to reenable this option after using burp and zap for the first time -- >> sudo spctl --master-enable
-
-# detects if Homebrew is istalled
-which -s brew
-if [[ $? != 0 ]] ; then
-  # Install Homebrew
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-else
-  brew update
-fi
-
-# install other utilities 
-#brew install git #prerequired 
+############
+# Utilities #
+############
 brew install mas 
-brew install curl
 brew install tree 
-brew install wget 
 brew install p7zip 
 brew install midnight-commander 
+
 brew install --cask keka
-brew install --cask xmind 
-brew install --cask drawio
-brew install --cask deluge
 brew install --cask firefox
-brew install --cask virtualbox 
-brew install --cask sublime-text 
 brew install --cask google-chrome
-brew install --cask docker
 
 #ddgo
 ddgo=$(mas search duckduckgo | head -n1 | tr -s " " | cut -f2 -d" " )
 mas install $ddgo  # must be sign in with Apple ID
+
 #enpass
 enpass=$(mas search enpass | head -n1 | tr -s " " | cut -f2 -d" " )
 mas install $enpass
 
-brew install python3 
-brew install yarn 
-git clone https://github.com/aliasio/wappalyzer
-cd wappalyzer
-yarn install
-yarn run link
-#node src/drivers/npm/cli.js https://example.com
-cd
+############
+# Planning #
+############
+brew install --cask xmind 
+brew install --cask drawio
 
-brew install --cask dotnet 
+####################
+# Data acquisition #
+####################
+brew install curl
+brew install wget 
+
+brew install --cask deluge
+
+#################
+# Visualization #
+#################
+brew install graphviz
+
+brew install --cask db-browser-for-sqlite
+
+###############
+# Development #
+###############
+brew install --cask github
+
+brew install caffe
+brew install scala
+brew install hadoop
+brew install onednn
+brew install python3 
+brew install open-mpi
+brew install apache-spark
+brew install --cask swift
+#brew install --cask dotnet 
+brew install --cask anaconda
+brew install --cask dotnet-sdk
 brew install --cask pycharm-ce 
+brew install --cask sublime-text 
+brew install --cask netbeans
 brew install --cask visual-studio-code
+brew install --cask eclipse-jee
+
+brew install java go r
+brew install --cask oracle-jdk
+brew install --cask oracle-jdk-javadoc
+brew install --cask visual-studio
+
+brew install nvm
+mkdir ~/.nvm
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+source ~/.bash_profile
+nvm_ver=$(nvm ls-remote | grep "Latest LTS" | tail -1 |  awk '{print $1}')
+nvm install $nvm_ver
+
+npm install -g npm
+npm i -g dependency-cruiser
+
+
+python3 -m pip install --upgrade setuptools
+python3 -m pip install --upgrade pip
+python3 -m pip install -U numpy scipy ipython jupyter pandas sympy nose
+python3 -m pip install -U matplotlib seaborn plotly
+python3 -m pip install -U times joblib 
+#python3 -m pip install -U OpenNN 
+python3 -m pip install -U h2o
+python3 -m pip install -U scikit-learn
+python3 -m pip install -U tensorflow
+#python3 -m pip install -U torch torchvision torchaudio
+python3 -m pip install -U cntk cntk-gpu
+
+brew install llvm
+echo 'export PATH="/usr/local/opt/llvm/bin:$PATH"' >> ~/.bash_profile
+
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
+bash ~/miniconda.sh -b -p $HOME/miniconda
+export PATH="$HOME/miniconda/bin:$PATH"
+
+conda activate ai
+conda install pytorch torchvision torchaudio cudatoolkit=11.0 -c pytorch
+conda deactivate ai
+conda install -c conda-forge shogun
+conda install -c conda-forge jupyterlab
 
 #xcode
 xcode=$(mas search xcode | head -n1 | tr -s " " | cut -f2 -d" " )
 mas install $xcode
 
-brew install --cask termius
+git clone git://github.com/pybrain/pybrain.git
+python3 -m pip install -U -e pybrain
+
+############
+# Modeling #
+############
+brew install --cask weka
+brew install --cask knime
+brew install --cask orange
+brew install --cask rapidminer-studio
+
+##################
+# Virtualization #
+##################
+brew install --cask docker
+brew install --cask virtualbox 
+
+##########
+# Remote #
+##########
 brew install mosh 
+brew install --cask termius
+
 #rdp
 rdp=$(mas search microsoft-remote | head -n1 | tr -s " " | cut -f2 -d" " )
 mas install $rdp
