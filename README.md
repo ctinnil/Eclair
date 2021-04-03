@@ -53,9 +53,5 @@ platform | manager | version
 ---------|---------|------------------
 macOS | [Homebrew](https://docs.brew.sh/Installation) 3.0.1 | `11.2.1` 
 
-### Disclaimer 
-
-***I will not be responsible for any direct or indirect damage caused due to the misusage of the provided framework.***
-
 ### Thanks to Homebrew developers and contributors !!!
 @https://github.com/Homebrew/brew.git
