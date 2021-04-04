@@ -23,9 +23,11 @@
 
 ---
 
-The project relies on open-source and commercial tools used in the industry that are maintained by their authors. To summarise, Eclair offers a full portable laboratory for AI research and experimentation. It also includes everything needed to develop your software or keep your data secure.
+This project relies on open-source and commercial tools used in the industry that are maintained by their authors. 
 
-This project is a work-in-progress, so feel free to contribute and suggest new tools that can be added. 
+To summarise, Eclair offers a full portable laboratory for AI research and experimentation. It also includes everything needed to develop your software or keep your data secure.
+
+Eclair workstation is a work-in-progress, so feel free to contribute and suggest new tools that can be added. 
 
 Requirements 
 -----
@@ -46,6 +48,16 @@ sudo chmod +x conf.sh
 ./conf.sh # and follow the instructions 
 sudo reboot
 ```
+
+To import few useful bookmarks 
+----
+1. Open **Safari**.
+2. Select **File**.
+3. Select **Import From** (or **Import Bookmarks...** ).
+4. Choose to import **Useful Bookmarks.html** from *Eclair/res.
+
+![Full Disk Access](https://github.com/ctinnil/badseed/blob/master/res/how%20to%20import%20bookmarks.png?raw=true)
+
 
 Tested on
 -----
