@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
-# A lot of these configs have been taken from various places on the web, as:
+# Various configs have been taken from various places on the web, as:
 #   -	https://gist.github.com/brandonb927/3195465
 #   -	https://gist.github.com/codeinthehole/26b37efa67041e1307db
 #   -	https://gist.github.com/MatthewMueller/e22d9840f9ea2fee4716 
-#   -	https://gist.github.com/jousby/2ab03202b5bf7878f9b850b916e54a3e
+#   -	https://gist.github.com/jousby/2ab03202b5bf7878f9b850b916e54a3e]
+# and so on ... try it yourself
 
 cat << EOF
                         c.                          ####################################################################
@@ -35,28 +36,29 @@ cat << EOF
         /**        *****  /**  ******   ** ******   ##  ***                      Requirements                    ***  ##
         /*******  **///** /** //////** /**//**//*   ##  + Support for hypervisor applications (like Docker)           ##
         /**////  /**  //  /**  ******* /** /** /    ##  + Homebrew version 3+                                         ##
-        /**      /**   ** /** **////** /** /**      ##  + Recommended hardware: 4GB+ RAM, 100GB+ HDD and 2+ CPUs      ##
-        /********//*****  ***//********/**/***      ##                                                                ##
-        ////////  /////  ///  //////// // ///       ####################################################################
+        /**      /**   ** /** **////** /** /**      ##  + Recommended hardware: 4GB+ RAM, 150GB+ HDD and 2+ CPUs      ##
+        /********//*****  ***//********/**/***      ##  + Some installs require that you are signed in with your  ID ##
+        ////////  /////  ///  //////// // ///       ##                                                                ##
+                                                    ####################################################################
 EOF
 
 # Set continue to false by default
 CONTINUE=false
 
 echo ""
-cecho "###############################################" $red
-cecho "#        DO NOT RUN THIS SCRIPT BLINDLY       #" $red
-cecho "#         YOU'LL PROBABLY REGRET IT...        #" $red
-cecho "#                                             #" $red
-cecho "#              READ IT THOROUGHLY             #" $red
-cecho "#         AND EDIT TO SUIT YOUR NEEDS         #" $red
-cecho "###############################################" $red
+echo "###############################################"
+echo "#        DO NOT RUN THIS SCRIPT BLINDLY       #"
+echo "#         YOU'LL PROBABLY REGRET IT...        #"
+echo "#                                             #"
+echo "#              READ IT THOROUGHLY             #"
+echo "#         AND EDIT TO SUIT YOUR NEEDS         #"
+echo "###############################################"
 echo ""
 
 
 echo ""
-cecho "Have you read through the script you're about to run and " $red
-cecho "understood that it will make changes to your computer? (y/n)" $red
+echo "Have you read through the script you're about to run and "
+echo "understood that it will make changes to your computer? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   CONTINUE=true
@@ -64,7 +66,7 @@ fi
 
 if ! $CONTINUE; then
   # Check if we're continuing and output a message if not
-  cecho "Please go read the script, it only takes a few minutes" $red
+  echo "Please go read the script, it only takes a few minutes"
   exit
 fi
 
@@ -80,6 +82,14 @@ sw_vers -productVersion
 # turn firewall on
 sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
 echo "Your Firewall is on ..."
+
+echo "Homebrew checkup ... "
+
+# Check for Homebrew, install if we don't have it
+if test ! $(which brew); then
+    echo "Installing homebrew..."
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
   
 # update all
 echo "Let's update your software and Homebrew recipes ..."
@@ -92,13 +102,7 @@ xcode-select --install
 xcode-select -p
 echo "Xcode command line tools installed ..."
 
-echo "Homebrew checkup ... "
-
-# Check for Homebrew, install if we don't have it
-if test ! $(which brew); then
-    echo "Installing homebrew..."
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
+sleep 60
 
 # Update homebrew recipes
 brew update
@@ -106,9 +110,8 @@ brew update
 echo "Homebrew is up to date ... "
 
 echo ""
-echo "Requiring password immediately after sleep or screen saver begins"
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
+echo "Activate Screensaver aftre 1 minute idle "
+defaults -currentHost write com.apple.screensaver idleTime 60
 
 echo ""
 echo "Setting the Pro theme by default in Terminal.app"
@@ -121,26 +124,9 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 echo ""
-echo "Hiding Safari bookmarks bar by default"
-defaults write com.apple.Safari ShowFavoritesBar -bool false
-
-echo ""
-echo "Enabling Safari debug menu"
-defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
-
-echo ""
-echo "Removing useless icons from Safari bookmarks bar"
-defaults write com.apple.Safari ProxiesInBookmarksBar "()"
-
-echo ""
-echo "Enabling the Develop menu and the Web Inspector in Safari"
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
-
-echo ""
 echo "Set Eclair workstation wallpaper"
-osascript -e 'tell application "Finder" to set desktop picture to POSIX file "./res/lockscreen.jpeg"'
+cp ./res/lockscreen.jpeg /tmp/lockscreen.jpeg
+osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/tmp/lockscreen.jpeg"'
 
 #############
 # Utilities #
@@ -148,6 +134,7 @@ osascript -e 'tell application "Finder" to set desktop picture to POSIX file "./
 brew install mas 
 brew install tree 
 brew install p7zip 
+brew install cmake
 brew install midnight-commander 
 
 brew install --cask keka
@@ -291,6 +278,9 @@ brew install --cask termius
 rdp=$(mas search microsoft-remote | head -n1 | tr -s " " | cut -f2 -d" " )
 mas install $rdp
 
+docker pull ibmcom/fhe-toolkit-ubuntu
+docker pull nvidia/cuda
+
 #check installs
 brew doctor 
 
@@ -301,9 +291,7 @@ brew cleanup
 set show-all-if-ambiguous on
 
 #add bookmarks 
-: '
 sudo chmod +ux addbookmarks.sh
 ./addbookmarks.sh "Eclair Workstation" "HomePage https://ctinnil.github.io/Eclair/, Project https://github.com/ctinnil/Eclair, Homebrew https://formulae.brew.sh"
-'
 
 echo "Setup complete !!!"
