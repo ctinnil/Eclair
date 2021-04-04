@@ -31,7 +31,8 @@ Requirements
 -----
 These requirements are for the computer running the core framework:
 * Support for hypervisor applications (like [Docker](https://docs.docker.com/docker-for-mac/install/))
-* recommended hardware to run on is 4GB+ RAM, 100GB+ HDD and 2+ CPUs
+* Recommended hardware to run on is 4GB+ RAM, 150GB+ HDD and 2+ CPUs
+* Some installs require that you are signed in with your AppleID
 
 Installation 
 -----
@@ -51,6 +52,7 @@ Tested on
 
 platform | manager | version 
 ---------|---------|------------------
+macOS | [Homebrew](https://docs.brew.sh/Installation) 3.0.10 | `11.2.3` 
 macOS | [Homebrew](https://docs.brew.sh/Installation) 3.0.1 | `11.2.1` 
 
 ### Thanks to Homebrew developers and contributors !!!
