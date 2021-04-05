@@ -31,7 +31,8 @@ The framework's name ECLAIR stands for Enrich, Classify, Learn, Analyze, Interpr
 
 It also includes everything needed to develop your software or keep your data secure.
 
-Eclair workstation is a work-in-progress, so feel free to contribute and suggest new tools that can be added. This project relies on open-source and commercial tools used in the industry that are maintained by their authors. 
+Eclair workstation is a work-in-progress, so feel free to contribute and suggest new tools that can be added. 
+*This project relies on open-source and commercial tools used in the industry that are maintained by their authors.*
 
 Requirements 
 -----
