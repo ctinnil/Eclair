@@ -27,6 +27,8 @@ ECLAIR is an artificial intelligence research and experimentation macOS-based wo
 
 The construction of the framework is base on the data science lifecycle, as follows:
 
+![image](https://user-images.githubusercontent.com/69745175/113582409-02d4da80-9631-11eb-89db-f312241ef15f.png)
+
 The framework's name ECLAIR stands for Enrich, Classify, Learn, Analyze, Interpret, and Report. In its users' eyes, the Eclair workstation can be viewed as a complete portable laboratory consisting of more than fifty open-source and commercial tools used in the AI industry.
 
 ![ECLAIR V2](https://user-images.githubusercontent.com/69745175/113580838-f5b6ec00-962e-11eb-94d2-69c69ed19860.png)
