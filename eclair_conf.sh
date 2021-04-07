@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
-# Various configs have been taken from various places on the web, as:
-#   -	https://gist.github.com/brandonb927/3195465
-#   -	https://gist.github.com/codeinthehole/26b37efa67041e1307db
-#   -	https://gist.github.com/MatthewMueller/e22d9840f9ea2fee4716 
-#   -	https://gist.github.com/jousby/2ab03202b5bf7878f9b850b916e54a3e]
-# and so on ... try it yourself
+osascript <<"EOF"
+    tell application "System Events"
+        perform action "AXZoomWindow" of (first button whose subrole is "AXFullScreenButton") of (first window whose subrole is "AXStandardWindow") of (first process whose frontmost is true)
+    end tell
+EOF
 
 cat << EOF
                         c.                          ####################################################################
@@ -123,10 +122,10 @@ echo "Enable tap-to-click"
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-echo ""
-echo "Set Eclair workstation wallpaper"
-cp ./res/lockscreen.jpeg /tmp/lockscreen.jpeg
-osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/tmp/lockscreen.jpeg"'
+brew install gcc #necessary before ack and others
+brew install --cask oracle-jdk #Oracle Java Standard Edition Development Kit for NetBeans and others 
+brew tap homebrew/cask-versions #necessary for Microsoft Visual Studio
+brew install --cask visual-studio #Microsoft Visual Studio
 
 PACKAGES=(
     ack #a beyond grep-like source code search tool
@@ -174,13 +173,13 @@ PACKAGES=(
     tmux #an open-source terminal multiplexer for Unix-like operating systems
     trash-cli #a command-line interface to the freedesktop.org trashcan
     tree #a tiny, cross-platform command-line program used to recursively list or display the content of a directory in a tree-like format
-    vim #a clone of vi text editor
     wget #a computer program that retrieves content from web
     wiki #a command-line Wikipedia search tool
 )
 
 CASKS=(
     anaconda #Continuum Analytics Anaconda
+    ccleaner #Piriform CCleaner
     db-browser-for-sqlite #DB Browser for SQLite
     deluge #Deluge - BitTorrent client
     docker #Docker Desktop
@@ -198,10 +197,10 @@ CASKS=(
     microsoft-remote-desktop #Microsoft Remote Desktop
     miniconda #Continuum Analytics Miniconda
     merlin-project #Merlin Project
-    netbeans #NetBeans IDE 
-    oracle-jdk #Oracle Java Standard Edition Development Kit
+    netbeans #NetBeans IDE ########problems
     oracle-jdk-javadoc #Oracle Java Standard Edition Development Kit Documentation
     orange #Orange - Component-based data mining software
+    platypus #Platypus - Tool to create native applications from command-line scripts
     projectlibre #ProjectLibre
     pycharm-ce #Jetbrains PyCharm Community Edition
     rapidminer-studio #RapidMiner Studio
@@ -210,7 +209,6 @@ CASKS=(
     termius #Termius
     vagrant #Vagrant
     virtualbox #Oracle VirtualBox
-    visual-studio #Microsoft Visual Studio
     visual-studio-code #Microsoft Visual Studio Code
     vlc #VLC media player
     weka #Weka
@@ -222,8 +220,14 @@ echo "Installing packages ... "
 brew install ${PACKAGES[@]}
 
 echo ""
+echo "Set Eclair workstation wallpaper"
+git clone https://github.com/ctinnil/Eclair.git
+cp ./Eclair/res/lockscreen.jpeg /tmp/lockscreen.jpeg
+osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/tmp/lockscreen.jpeg"'
+
+echo ""
 echo "Installing cask apps ... "
-brew cask install ${CASKS[@]}
+brew install --cask ${CASKS[@]}
 
 echo ""
 echo "Elastic Stack setup ... "
