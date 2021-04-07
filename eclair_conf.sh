@@ -316,10 +316,13 @@ cd ../..
 #check installs
 brew doctor 
 
+echo ""
 echo "Cleaning up..."
 brew cleanup
 
 # enable terminal autocomplet 
 set show-all-if-ambiguous on
 
+echo ""
 echo "Setup complete !!!"
+echo ""
