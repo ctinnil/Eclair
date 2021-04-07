@@ -324,5 +324,5 @@ brew cleanup
 set show-all-if-ambiguous on
 
 echo ""
-echo "Setup complete !!!"
+echo "Setup complete !!! Please restart your system."
 echo ""
