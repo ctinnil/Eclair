@@ -49,7 +49,7 @@ Installation
 -----
 Simply copy and paste the following in a terminal:
 ```
-bash <(curl -s https://raw.githubusercontent.com/Benjamin-Dobell/nvidia-update/master/nvidia-update.sh)
+bash <(curl -s https://raw.githubusercontent.com/ctinnil/Eclair/main/eclair_conf.sh)
 ```
 ``` sh
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" # to install Homebrew
