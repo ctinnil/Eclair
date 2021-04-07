@@ -47,7 +47,10 @@ These requirements are for the computer running the core framework:
 
 Installation 
 -----
-
+Simply copy and paste the following in a terminal:
+```
+bash <(curl -s https://raw.githubusercontent.com/Benjamin-Dobell/nvidia-update/master/nvidia-update.sh)
+```
 ``` sh
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" # to install Homebrew
 brew install git # or install git some other way 
