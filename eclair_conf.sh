@@ -14,9 +14,9 @@ cat << EOF
           .xWMWkc.             .;dXMM0:             ##                    and  configure  your own AI  research  and  ##
       '..OMMK:       .;:c:;.       .xWMX;.'         ##                    experimentation workstation.                ##
   .:kN0XMMX,     .oKMMMMMMMMMKo.     .kMMX0NOc.     ## * Args           : none                                        ##
- dMk;   .;      oMMMMKd:':dKMMMMd      '.   ,xMx    ## * Usage          : chmod +x eclair_conf.sh && ./eclair_conf.sh ##
+ dMk;   .;      oMMMMKd:':dKMMMMd      '.   ,xMx    ## * Usage          : zsh eclair_conf.sh                          ##
  xM.           cMMMM;';;;;;;,MMMMl           .Mk    ## * Notes          : Install Homebrew to use this script.        ##
- xM:           xMMMM,;,;;';c,MMMMk           ;Mk    ## * Version        : 1.1                                         ##
+ xM:           xMMMM,;,;;';c,MMMMk           ;Mk    ## * Version        : 1.0                                         ##
  .l0Nk:.       .NMMMo,';',,;oMMMW.        ;kWKo.    ## * Author         : @ctinnil                                    ##
     OMM.        .NMMMMKdcdKMMMMW'         0MM.      ## * Email          : ctinnil@protonmail.com                      ##
     kMM'         .NMMMMMMMMMMMW.          KMM.      ##                                                                ##
@@ -33,8 +33,8 @@ cat << EOF
          ********          **           **          ####################################################################
         /**/////          /**          //           ##                                                                ##
         /**        *****  /**  ******   ** ******   ##  ***                      Requirements                    ***  ##
-        /*******  **///** /** //////** /**//**//*   ##  + Support for hypervisor applications (like Docker)           ##
-        /**////  /**  //  /**  ******* /** /** /    ##  + Homebrew version 3+                                         ##
+        /*******  **///** /** //////** /**//**//*   ##  + macOS Catalina 10.15 or higher                              ##
+        /**////  /**  //  /**  ******* /** /** /    ##  + Support for hypervisor applications (like Docker)           ##
         /**      /**   ** /** **////** /** /**      ##  + Recommended hardware: 4GB+ RAM, 150GB+ HDD and 2+ CPUs      ##
         /********//*****  ***//********/**/***      ##  + Some installs require that you are signed in with your  ID ##
         ////////  /////  ///  //////// // ///       ##                                                                ##
@@ -221,7 +221,7 @@ brew install ${PACKAGES[@]}
 echo ""
 echo "Set Eclair workstation wallpaper"
 git clone https://github.com/ctinnil/Eclair.git
-cp Eclair/res/lockscreen.png /tmp/lockscreen.jpeg
+cp ./Eclair/res/lockscreen.jpeg /tmp/lockscreen.jpeg
 osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/tmp/lockscreen.jpeg"'
 
 echo ""
