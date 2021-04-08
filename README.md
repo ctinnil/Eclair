@@ -64,7 +64,7 @@ To import few useful bookmarks
 3. Select **Import From** (or **Import Bookmarks...** ).
 4. Choose to import **Useful Bookmarks.html** from *Eclair/res.
 
-![Full Disk Access](https://github.com/ctinnil/badseed/blob/master/res/how%20to%20import%20bookmarks.png?raw=true)
+<img width="606" alt="how to import bookmarks" src="https://user-images.githubusercontent.com/69745175/114000179-6e05f300-9863-11eb-9064-a4b426daf862.png">
 
 ### Thanks to Homebrew developers and contributors !!!
 @https://github.com/Homebrew/brew.git
