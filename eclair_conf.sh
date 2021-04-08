@@ -221,7 +221,7 @@ brew install ${PACKAGES[@]}
 echo ""
 echo "Set Eclair workstation wallpaper"
 git clone https://github.com/ctinnil/Eclair.git
-cp ./Eclair/res/lockscreen.jpeg /tmp/lockscreen.jpeg
+cp Eclair/res/lockscreen.png /tmp/lockscreen.jpeg
 osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/tmp/lockscreen.jpeg"'
 
 echo ""
