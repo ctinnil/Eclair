@@ -40,7 +40,12 @@ Eclair workstation is a work-in-progress, so feel free to contribute and suggest
 
 Requirements 
 -----
+To diminish the time of run and the probability of failure, we recommend updating your macOS and tools before running the installation. 
+
+**Comment or delete any configurations that you consider unnecessary or just run the bootstrapping script.**
+
 These requirements are for the computer running the core framework:
+* macOS Catalina `10.15` or higher
 * Support for hypervisor applications (like [Docker](https://docs.docker.com/docker-for-mac/install/))
 * Recommended hardware to run on is 4GB+ RAM, 150GB+ HDD and 2+ CPUs
 * Some installs require that you are signed in with your AppleID
@@ -49,16 +54,7 @@ Installation
 -----
 Simply copy and paste the following in a terminal:
 ```
-bash <(curl -s https://raw.githubusercontent.com/ctinnil/Eclair/main/eclair_conf.sh)
-```
-``` sh
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" # to install Homebrew
-brew install git # or install git some other way 
-git clone https://github.com/ctinnil/Eclair.git
-cd Eclair
-sudo chmod +x conf.sh
-./conf.sh # and follow the instructions 
-sudo reboot
+zsh <(curl -s https://raw.githubusercontent.com/ctinnil/Eclair/main/eclair_conf.sh)
 ```
 
 To import few useful bookmarks 
@@ -70,14 +66,11 @@ To import few useful bookmarks
 
 ![Full Disk Access](https://github.com/ctinnil/badseed/blob/master/res/how%20to%20import%20bookmarks.png?raw=true)
 
-
-Tested on
------
-
-platform | manager | version 
----------|---------|------------------
-macOS | [Homebrew](https://docs.brew.sh/Installation) 3.0.10 | `11.2.3` 
-macOS | [Homebrew](https://docs.brew.sh/Installation) 3.0.1 | `11.2.1` 
-
 ### Thanks to Homebrew developers and contributors !!!
 @https://github.com/Homebrew/brew.git
+
+Various configs have been taken from various places on the web, as:
+- https://gist.github.com/brandonb927/3195465
+- https://gist.github.com/codeinthehole/26b37efa67041e1307db
+
+Check them out yourself!
