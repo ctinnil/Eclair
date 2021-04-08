@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/zsh
 
 osascript <<"EOF"
     tell application "System Events"
@@ -200,7 +200,6 @@ CASKS=(
     netbeans #NetBeans IDE ########problems
     oracle-jdk-javadoc #Oracle Java Standard Edition Development Kit Documentation
     orange #Orange - Component-based data mining software
-    platypus #Platypus - Tool to create native applications from command-line scripts
     projectlibre #ProjectLibre
     pycharm-ce #Jetbrains PyCharm Community Edition
     rapidminer-studio #RapidMiner Studio
