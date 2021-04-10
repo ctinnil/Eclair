@@ -16,7 +16,7 @@ cat << EOF
   .:kN0XMMX,     .oKMMMMMMMMMKo.     .kMMX0NOc.     ## * Args           : none                                        ##
  dMk;   .;      oMMMMKd:':dKMMMMd      '.   ,xMx    ## * Usage          : zsh eclair_conf.sh                          ##
  xM.           cMMMM;';;;;;;,MMMMl           .Mk    ## * Notes          : Install Homebrew to use this script.        ##
- xM:           xMMMM,;,;;';c,MMMMk           ;Mk    ## * Version        : 1.0                                         ##
+ xM:           xMMMM,;,;;';c,MMMMk           ;Mk    ## * Version        : 1.1                                         ##
  .l0Nk:.       .NMMMo,';',,;oMMMW.        ;kWKo.    ## * Author         : @ctinnil                                    ##
     OMM.        .NMMMMKdcdKMMMMW'         0MM.      ## * Email          : ctinnil@protonmail.com                      ##
     kMM'         .NMMMMMMMMMMMW.          KMM.      ##                                                                ##
