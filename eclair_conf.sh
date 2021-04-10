@@ -82,6 +82,13 @@ sw_vers -productVersion
 sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
 echo "Your Firewall is on ..."
 
+# install xcode command line tool
+xcode-select --install
+xcode-select -p
+echo "Xcode command line tools installed ... "
+
+sleep 60
+
 echo "Homebrew checkup ... "
 
 # Check for Homebrew, install if we don't have it
@@ -94,18 +101,10 @@ fi
 echo "Let's update your software and Homebrew recipes ..."
 sudo softwareupdate -ia --verbose
 brew update
-echo "Done."
-
-# install xcode command line tool
-xcode-select --install
-xcode-select -p
-echo "Xcode command line tools installed ... "
-
-sleep 60
-
-# Update homebrew recipes
-brew update
-
+brew install gcc #necessary before ack and others
+brew install --cask oracle-jdk #Oracle Java Standard Edition Development Kit for NetBeans and others 
+brew tap homebrew/cask-versions #necessary for Microsoft Visual Studio
+brew install --cask visual-studio #Microsoft Visual Studio
 echo "Homebrew is up to date ... "
 
 echo ""
@@ -121,11 +120,6 @@ echo ""
 echo "Enable tap-to-click"
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-
-brew install gcc #necessary before ack and others
-brew install --cask oracle-jdk #Oracle Java Standard Edition Development Kit for NetBeans and others 
-brew tap homebrew/cask-versions #necessary for Microsoft Visual Studio
-brew install --cask visual-studio #Microsoft Visual Studio
 
 PACKAGES=(
     ack #a beyond grep-like source code search tool
@@ -221,8 +215,9 @@ brew install ${PACKAGES[@]}
 echo ""
 echo "Set Eclair workstation wallpaper"
 git clone https://github.com/ctinnil/Eclair.git
-cp Eclair/lockscreen.jpeg /tmp/lockscreen.jpeg
-osascript -e 'tell application "Finder" to set desktop picture to POSIX file "/tmp/lockscreen.jpeg"'
+cp Eclair/lockscreen.jpeg ~/Pictures/lockscreen.jpeg
+path_of_logo=$(echo ~/Pictures/lockscreen.jpeg)
+osascript -e 'tell application "Finder" to set desktop picture to POSIX file "'"$path_of_logo"'"'
 
 echo ""
 echo "Installing cask apps ... "
@@ -265,6 +260,7 @@ python3 -m pip install --upgrade setuptools
 python3 -m pip install --upgrade pip
 
 PYTHON_PACKAGES=(
+    beautifulsoup4
     cntk
     cortex
     h2o
@@ -280,6 +276,7 @@ PYTHON_PACKAGES=(
     plaidml-keras
     plotly
     pyopencl
+    requests
     scikit-image
     scikit-learn
     scipy 
@@ -292,8 +289,10 @@ PYTHON_PACKAGES=(
     torchaudio
     torchvision
     tqdm
+    urllib3
     virtualenv
     virtualenvwrapper
+    weka
 )
 
 sudo python3 -m pip install -U ${PYTHON_PACKAGES[@]}
