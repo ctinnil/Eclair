@@ -27,12 +27,27 @@ ECLAIR is an artificial intelligence research and experimentation macOS-based wo
 
 The construction of the framework is base on the data science lifecycle, as follows:
 
-<picture>
-  <source
-          src="https://user-images.githubusercontent.com/69745175/115736769-37b49180-a394-11eb-80f9-a281b58715f3.png"
-          media="(prefers-color-scheme: dark)">
-  <img> src="https://user-images.githubusercontent.com/69745175/115736809-400ccc80-a394-11eb-8145-8ea575cbbc84.png">
-</picture>
+<link rel="icon" href="https://user-images.githubusercontent.com/69745175/115736809-400ccc80-a394-11eb-8145-8ea575cbbc84.png" media="(prefers-color-scheme:no-preference)">
+<link rel="icon" href="https://user-images.githubusercontent.com/69745175/115736769-37b49180-a394-11eb-80f9-a281b58715f3.png"  media="(prefers-color-scheme:dark)">
+<link rel="icon" href="https://user-images.githubusercontent.com/69745175/115736809-400ccc80-a394-11eb-8145-8ea575cbbc84.png" media="(prefers-color-scheme:light)">
+
+$(document).ready(function() {
+    if (!window.matchMedia)
+        return;
+
+    var current = $('head > link[rel="icon"][media]');
+    $.each(current, function(i, icon) {
+        var match = window.matchMedia(icon.media);
+        function swap() {
+            if (match.matches) {
+                current.remove();
+                current = $(icon).appendTo('head');
+            }
+        }
+        match.addListener(swap);
+        swap();
+    });
+});
 
 ![image](https://user-images.githubusercontent.com/69745175/113582409-02d4da80-9631-11eb-89db-f312241ef15f.png)
 
