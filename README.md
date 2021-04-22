@@ -27,16 +27,9 @@ ECLAIR is an artificial intelligence research and experimentation macOS-based wo
 
 The construction of the framework is base on the data science lifecycle, as follows:
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/69745175/115736809-400ccc80-a394-11eb-8145-8ea575cbbc84.png" alt="Light">
-  @media (prefers-color-scheme: dark) {
-      rect {
-        fill: red;
-      }
-</p>
+![light](https://user-images.githubusercontent.com/69745175/115736809-400ccc80-a394-11eb-8145-8ea575cbbc84.png)
 
-<link rel="icon" href="" media="(prefers-color-scheme:no-preference)">
-<link rel="icon" href="https://user-images.githubusercontent.com/69745175/115736769-37b49180-a394-11eb-80f9-a281b58715f3.png"  media="(prefers-color-scheme:dark)">
+![dark](https://user-images.githubusercontent.com/69745175/115736769-37b49180-a394-11eb-80f9-a281b58715f3.png)
 
 ![image](https://user-images.githubusercontent.com/69745175/113582409-02d4da80-9631-11eb-89db-f312241ef15f.png)
 
