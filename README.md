@@ -29,7 +29,7 @@ The construction of the framework is base on the data science lifecycle, as foll
 
 <picture>
   <source
-          srcset="https://user-images.githubusercontent.com/69745175/115736769-37b49180-a394-11eb-80f9-a281b58715f3.png"
+          src="https://user-images.githubusercontent.com/69745175/115736769-37b49180-a394-11eb-80f9-a281b58715f3.png"
           media="(prefers-color-scheme: dark)">
   <img> src="https://user-images.githubusercontent.com/69745175/115736809-400ccc80-a394-11eb-8145-8ea575cbbc84.png">
 </picture>
