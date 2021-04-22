@@ -31,23 +31,22 @@ The construction of the framework is base on the data science lifecycle, as foll
 <link rel="icon" href="https://user-images.githubusercontent.com/69745175/115736769-37b49180-a394-11eb-80f9-a281b58715f3.png"  media="(prefers-color-scheme:dark)">
 <link rel="icon" href="https://user-images.githubusercontent.com/69745175/115736809-400ccc80-a394-11eb-8145-8ea575cbbc84.png" media="(prefers-color-scheme:light)">
 
-$(document).ready(function() {
-    if (!window.matchMedia)
-        return;
+<svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    rect {
+      fill: green;
+    }
+    @media (prefers-color-scheme: dark) {
+      rect {
+        fill: red;
+      }
+    }
+  </style>
+  <rect width="50" height="50" rx="5"/>
+</svg>
 
-    var current = $('head > link[rel="icon"][media]');
-    $.each(current, function(i, icon) {
-        var match = window.matchMedia(icon.media);
-        function swap() {
-            if (match.matches) {
-                current.remove();
-                current = $(icon).appendTo('head');
-            }
-        }
-        match.addListener(swap);
-        swap();
-    });
-});
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" type="image/png">
 
 ![image](https://user-images.githubusercontent.com/69745175/113582409-02d4da80-9631-11eb-89db-f312241ef15f.png)
 
