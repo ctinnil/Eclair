@@ -4,6 +4,7 @@
 ![logo dinamic](https://user-images.githubusercontent.com/69745175/113580971-2139d680-962f-11eb-8e72-da26b102f994.gif)
 
 <p align="center">
+  <a href="https://zenodo.org/badge/latestdoi/351356478"><img src="https://zenodo.org/badge/351356478.svg" alt="DOI"></a>
   <a href="https://github.com/ctinnil/Eclaire/blob/master/LICENSE">
       <img src="https://img.shields.io/github/license/ctinnil/Eclair" alt="License">
   </a>
