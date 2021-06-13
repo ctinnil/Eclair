@@ -5,7 +5,7 @@
 
 <p align="center">
   <a href="https://zenodo.org/badge/latestdoi/351356478"><img src="https://zenodo.org/badge/351356478.svg" alt="DOI"></a>
-  <a href="https://github.com/ctinnil/Eclaire/blob/master/LICENSE.txt">
+  <a href="https://github.com/ctinnil/Eclaire/blob/master/LICENSE">
       <img src="https://img.shields.io/github/license/ctinnil/Eclair" alt="License">
   </a>
   <a href="https://github.com/ctinnil/Eclair/issues">
