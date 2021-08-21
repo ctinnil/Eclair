@@ -80,4 +80,6 @@ Check them out yourself!
 
 If you find this code useful for your research, please cite
 
+```BibTex
 @INPROCEEDINGS{9514062,  author={Nila, Constantin and Preda, Marius and Patriciu, Victor},  booktitle={2021 Fifth World Conference on Smart Trends in Systems Security and Sustainability (WorldS4)},   title={ECLAIR: An artificial intelligence research and experimentation workstation},   year={2021},  volume={},  number={},  pages={71-74},  doi={10.1109/WorldS451998.2021.9514062}}
+```
