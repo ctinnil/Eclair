@@ -5,7 +5,7 @@
 
 <p align="center">
   <a href="https://doi.org/10.5281/zenodo.4939990"><img src="https://zenodo.org/badge/351356478.svg" alt="DOI"></a>
-  <a href="https://doi.org/10.5281/zenodo.4939990"><img src="https://zenodo.org/badge/351356478.svg" alt="DOI"></a>
+  <a href="https://doi.org/10.1109/WorldS451998.2021.9514062"><img src="https://img.shields.io/badge/DOI-10.1109%2FWorldS451998.2021.9514062-blue" alt="DOI"></a>
   <a href="https://github.com/ctinnil/Eclair/blob/main/LICENSE">
       <img src="https://img.shields.io/github/license/ctinnil/Eclair" alt="License">
   </a>
