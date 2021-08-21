@@ -75,3 +75,9 @@ Some configurations have been inspired from various places on the web, as:
 - https://gist.github.com/codeinthehole/26b37efa67041e1307db
 
 Check them out yourself!
+
+### Reference
+
+If you find this code useful for your research, please cite
+
+@INPROCEEDINGS{9514062,  author={Nila, Constantin and Preda, Marius and Patriciu, Victor},  booktitle={2021 Fifth World Conference on Smart Trends in Systems Security and Sustainability (WorldS4)},   title={ECLAIR: An artificial intelligence research and experimentation workstation},   year={2021},  volume={},  number={},  pages={71-74},  doi={10.1109/WorldS451998.2021.9514062}}
