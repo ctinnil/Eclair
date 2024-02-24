@@ -82,7 +82,7 @@ sudo apt install curl git -y
 # Test brew install 
 test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)
 test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-echo 'eval "$('$(brew --prefix)'/bin/brew shellenv)"' >> ~/.bashrc
+echo "eval \"\$(\$(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
 brew install hello
 
 # Update brew
