@@ -88,9 +88,9 @@ brew install hello
 # Update brew
 brew update
 brew install gcc #necessary before ack and others
-brew install --cask oracle-jdk #Oracle Java Standard Edition Development Kit for NetBeans and others 
+#brew install --cask oracle-jdk #Oracle Java Standard Edition Development Kit for NetBeans and others 
 brew tap homebrew/cask-versions #necessary for Microsoft Visual Studio
-brew install --cask visual-studio #Microsoft Visual Studio
+#brew install --cask visual-studio #Microsoft Visual Studio
 brew upgrade
 brew doctor
 brew autoremove
@@ -148,35 +148,32 @@ BREW_PACKAGES=(
 )
 
 BREW_CASKS=(
-    anaconda #Continuum Analytics Anaconda
-    ccleaner #Piriform CCleaner
-    db-browser-for-sqlite #DB Browser for SQLite
-    deluge #Deluge - BitTorrent client
+    #db-browser-for-sqlite #DB Browser for SQLite
+    #deluge #Deluge - BitTorrent client
     docker #Docker Desktop
     dotnet-sdk #.NET SDK
     drawio #draw.io Desktop
-    eclipse-java #Eclipse IDE for Java Developers
+    #eclipse-java #Eclipse IDE for Java Developers
     enpass #Enpass
     firefox #Mozilla Firefox
-    github #GitHub Desktop
-    google-chrome #Google Chrome
-    gpg-suite-pinentry #GPG Suite Pinentry
-    keka #Keka - File archiver
-    knime #KNIME Analytics Platform
-    mactex #MacTeX - Full TeX Live distribution with GUI applications
-    microsoft-remote-desktop #Microsoft Remote Desktop
-    miniconda #Continuum Analytics Miniconda
-    merlin-project #Merlin Project
-    netbeans #NetBeans IDE ########problems
-    oracle-jdk-javadoc #Oracle Java Standard Edition Development Kit Documentation
-    orange #Orange - Component-based data mining software
+    #github #GitHub Desktop
+    #google-chrome #Google Chrome
+    #gpg-suite-pinentry #GPG Suite Pinentry
+    #keka #Keka - File archiver
+    #knime #KNIME Analytics Platform
+    #mactex #MacTeX - Full TeX Live distribution with GUI applications
+    #microsoft-remote-desktop #Microsoft Remote Desktop
+    #miniconda #Continuum Analytics Miniconda
+    #merlin-project #Merlin Project
+    #oracle-jdk-javadoc #Oracle Java Standard Edition Development Kit Documentation
+    #orange #Orange - Component-based data mining software
     openrefine #OpenRefine - data cleanup and transformation to other formats
     projectlibre #ProjectLibre
-    pycharm-ce #Jetbrains PyCharm Community Edition
-    rapidminer-studio #RapidMiner Studio
+    #pycharm-ce #Jetbrains PyCharm Community Edition
+    #rapidminer-studio #RapidMiner Studio
     spectacle #Spectacle - Move and resize windows with ease
     sublime-text #Sublime Text
-    termius #Termius
+    #termius #Termius
     vagrant #Vagrant
     virtualbox #Oracle VirtualBox
     visual-studio-code #Microsoft Visual Studio Code
@@ -220,10 +217,22 @@ cp Eclair/lockscreen.jpeg ~/Pictures/lockscreen.jpeg
 gsettings set org.gnome.desktop.background picture-uri ~/Pictures/lockscreen.jpeg
 gsettings set org.gnome.desktop.screensaver picture-uri ~/Pictures/lockscreen.jpeg
 
-
 echo ""
 echo "Installing cask apps ... "
-sudo snap install ${BREW_CASKS[@]}
+#sudo snap install ${BREW_CASKS[@]}
+
+sudo apt install deluge -y
+sudo snap install drawio
+sudo snap install docker
+sudo snap install dotnet-sdk --classic
+sudo snap install enpass
+sudo snap install firefox
+sudo snap install openrefine
+sudo snap install projectlibre
+sudo snap install netbeans --classic
+sudo snap install spectacle
+sudo snap install sublime-text --classic
+
 
 # Setup Docker without sudo
 sudo groupadd docker
