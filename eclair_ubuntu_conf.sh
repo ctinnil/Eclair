@@ -238,7 +238,6 @@ sudo snap install vlc
 sudo snap install weka
 sudo snap install xmind
 
-
 # Setup Docker without sudo
 sudo groupadd docker
 sudo usermod -aG docker $USER
