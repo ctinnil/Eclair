@@ -194,6 +194,7 @@ CASKS=(
     netbeans #NetBeans IDE ########problems
     oracle-jdk-javadoc #Oracle Java Standard Edition Development Kit Documentation
     orange #Orange - Component-based data mining software
+    openrefine #OpenRefine - data cleanup and transformation to other formats
     projectlibre #ProjectLibre
     pycharm-ce #Jetbrains PyCharm Community Edition
     rapidminer-studio #RapidMiner Studio
