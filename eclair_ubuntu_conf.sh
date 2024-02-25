@@ -176,7 +176,7 @@ BREW_CASKS=(
     #termius #Termius
     vagrant #Vagrant
     virtualbox #Oracle VirtualBox
-    visual-studio-code #Microsoft Visual Studio Code
+    #visual-studio-code #Microsoft Visual Studio Code
     vlc #VLC media player
     weka #Weka
     xmind #XMind - Mind mapping and brainstorming tool
@@ -232,6 +232,11 @@ sudo snap install projectlibre
 sudo snap install netbeans --classic
 sudo snap install spectacle
 sudo snap install sublime-text --classic
+sudo apt install vagrant -y
+sudo apt install virtualbox -y
+sudo snap install vlc
+sudo snap install weka
+sudo snap install xmind
 
 
 # Setup Docker without sudo
