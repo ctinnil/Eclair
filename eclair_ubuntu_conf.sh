@@ -223,7 +223,7 @@ gsettings set org.gnome.desktop.screensaver picture-uri ~/Pictures/lockscreen.jp
 
 echo ""
 echo "Installing cask apps ... "
-brew install --cask ${BREW_CASKS[@]}
+sudo snap install ${BREW_CASKS[@]}
 
 # Setup Docker without sudo
 sudo groupadd docker
