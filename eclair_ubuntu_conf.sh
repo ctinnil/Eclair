@@ -199,11 +199,14 @@ PACKAGES=(
     nginx
     nodejs
     npm
+    deluge
+    vagrant
+    virtualbox
 )
 
 echo "Installing base packages..."
 for package in "${PACKAGES[@]}"; do
-    sudo apt-get install -y $package
+    sudo apt install -y $package
 done
 
 echo ""
@@ -221,7 +224,7 @@ echo ""
 echo "Installing cask apps ... "
 #sudo snap install ${BREW_CASKS[@]}
 
-sudo apt install deluge -y
+#sudo apt install deluge -y
 sudo snap install drawio
 sudo snap install docker
 sudo snap install dotnet-sdk --classic
@@ -232,16 +235,16 @@ sudo snap install projectlibre
 sudo snap install netbeans --classic
 sudo snap install spectacle
 sudo snap install sublime-text --classic
-sudo apt install vagrant -y
-sudo apt install virtualbox -y
+#sudo apt install vagrant -y
+#sudo apt install virtualbox -y
 sudo snap install vlc
 sudo snap install weka
 sudo snap install xmind
 
 # Setup Docker without sudo
-sudo groupadd docker
-sudo usermod -aG docker $USER
-newgrp docker
+#sudo groupadd docker
+#sudo usermod -aG docker $USER
+#newgrp docker
 
 # Python packages
 echo "Installing Python packages..."
