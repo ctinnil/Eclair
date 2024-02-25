@@ -169,8 +169,8 @@ BREW_CASKS=(
     merlin-project #Merlin Project
     netbeans #NetBeans IDE ########problems
     oracle-jdk-javadoc #Oracle Java Standard Edition Development Kit Documentation
-    openrefine #OpenRefine - data cleanup and transformation to other formats
     orange #Orange - Component-based data mining software
+    openrefine #OpenRefine - data cleanup and transformation to other formats
     projectlibre #ProjectLibre
     pycharm-ce #Jetbrains PyCharm Community Edition
     rapidminer-studio #RapidMiner Studio
