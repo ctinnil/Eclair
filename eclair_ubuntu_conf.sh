@@ -1,22 +1,18 @@
-#!/bin/zsh
+#!/bin/bash
 
-osascript <<"EOF"
-    tell application "System Events"
-        perform action "AXZoomWindow" of (first button whose subrole is "AXFullScreenButton") of (first window whose subrole is "AXStandardWindow") of (first process whose frontmost is true)
-    end tell
-EOF
+echo "Starting setup..."
 
 cat << EOF
                         c.                          ####################################################################
                     .cOW0NKo'                       ##                                                                ##
-                .,cKMd,   .cXWd;.                   ## * Script Name    : eclair_conf.sh                              ##
+                .,cKMd,   .cXWd;.                   ## * Script Name    : eclair_ubuntu_conf.sh                       ##
              ,xXMMMXO       c0NMMWOc.               ## * Description    : An automation script that helps you deploy  ##
           .xWMWkc.             .;dXMM0:             ##                    and  configure  your own AI  research  and  ##
-      '..OMMK:       .;:c:;.       .xWMX;.'         ##                    experimentation workstation.                ##
-  .:kN0XMMX,     .oKMMMMMMMMMKo.     .kMMX0NOc.     ## * Args           : none                                        ##
- dMk;   .;      oMMMMKd:':dKMMMMd      '.   ,xMx    ## * Usage          : zsh eclair_conf.sh                          ##
- xM.           cMMMM;';;;;;;,MMMMl           .Mk    ## * Notes          : Install Homebrew to use this script.        ##
- xM:           xMMMM,;,;;';c,MMMMk           ;Mk    ## * Version        : 1.1                                         ##
+      '..OMMK:       .;:c:;.       .xWMX;.'         ##                    experimentation workstation on Ubuntu.      ##
+  .:kN0XMMX,     .oKMMMMMMMMMKo.     .kMMX0NOc.     ## * Usage          : chmod + eclair_ubuntu_conf.sh &&            ##
+ dMk;   .;      oMMMMKd:':dKMMMMd      '.   ,xMx    ##                     sudo ./eclair_ubuntu_conf.sh               ##
+ xM.           cMMMM;';;;;;;,MMMMl           .Mk    ## * Notes          : Adapted for Ubuntu systems.                 ##
+ xM:           xMMMM,;,;;';c,MMMMk           ;Mk    ## * Version        : 1.0                                         ##
  .l0Nk:.       .NMMMo,';',,;oMMMW.        ;kWKo.    ## * Author         : @ctinnil                                    ##
     OMM.        .NMMMMKdcdKMMMMW'         0MM.      ## * Email          : ctinnil@protonmail.com                      ##
     kMM'         .NMMMMMMMMMMMW.          KMM.      ##                                                                ##
@@ -33,10 +29,10 @@ cat << EOF
          ********          **           **          ####################################################################
         /**/////          /**          //           ##                                                                ##
         /**        *****  /**  ******   ** ******   ##  ***                      Requirements                    ***  ##
-        /*******  **///** /** //////** /**//**//*   ##  + macOS Catalina 10.15 or higher                              ##
-        /**////  /**  //  /**  ******* /** /** /    ##  + Support for hypervisor applications (like Docker)           ##
+        /*******  **///** /** //////** /**//**//*   ##  + Ubuntu 20.04 LTS or higher                                  ##
+        /**////  /**  //  /**  ******* /** /** /    ##  + Support for container applications (like Docker)            ##
         /**      /**   ** /** **////** /** /**      ##  + Recommended hardware: 4GB+ RAM, 150GB+ HDD and 2+ CPUs      ##
-        /********//*****  ***//********/**/***      ##  + Some installs require that you are signed in with your  ID ##
+        /********//*****  ***//********/**/***      ##                                                                ##
         ////////  /////  ///  //////// // ///       ##                                                                ##
                                                     ####################################################################
 EOF
@@ -69,59 +65,39 @@ if ! $CONTINUE; then
   exit
 fi
 
-# Ask for the administrator password upfront and run a
-# keep-alive to update existing `sudo` time stamp until script has finished
+# Ask for the administrator password upfront
 sudo -v
+# Keep-alive: update existing `sudo` time stamp until the script has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-# get macOS version
-echo "Your macOS version is ..."
-sw_vers -productVersion
+# Update and upgrade
+sudo apt update && sudo apt upgrade -y
 
-# turn firewall on
-sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
-echo "Your Firewall is on ..."
+# Install prerequisites 
+sudo apt install curl git -y
 
-# install xcode command line tool
-xcode-select --install
-xcode-select -p
-echo "Xcode command line tools installed ... "
+# Install brew 
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-sleep 60
+# Test brew install 
+test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+echo "eval \"\$(\$(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
+brew install hello
 
-echo "Homebrew checkup ... "
-
-# Check for Homebrew, install if we don't have it
-if test ! $(which brew); then
-    echo "Installing homebrew..."
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
-  
-# update all
-echo "Let's update your software and Homebrew recipes ..."
-sudo softwareupdate -ia --verbose
+# Update brew
 brew update
 brew install gcc #necessary before ack and others
-brew install --cask oracle-jdk #Oracle Java Standard Edition Development Kit for NetBeans and others 
+#brew install --cask oracle-jdk #Oracle Java Standard Edition Development Kit for NetBeans and others 
 brew tap homebrew/cask-versions #necessary for Microsoft Visual Studio
-brew install --cask visual-studio #Microsoft Visual Studio
+#brew install --cask visual-studio #Microsoft Visual Studio
+brew upgrade
+brew doctor
+brew autoremove
+brew cleanup
 echo "Homebrew is up to date ... "
 
-echo ""
-echo "Activate Screensaver aftre 1 minute idle "
-defaults -currentHost write com.apple.screensaver idleTime 60
-
-echo ""
-echo "Setting the Pro theme by default in Terminal.app"
-defaults write com.apple.Terminal "Default Window Settings" -string "Pro"
-defaults write com.apple.Terminal "Startup Window Settings" -string "Pro"
-
-echo ""
-echo "Enable tap-to-click"
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-
-PACKAGES=(
+BREW_PACKAGES=(
     ack #a beyond grep-like source code search tool
     apache-spark #a engine for large-scale data processing
     aria2 #a flexible download utility software with multi-protocol and multi-source support
@@ -171,95 +147,107 @@ PACKAGES=(
     wiki #a command-line Wikipedia search tool
 )
 
-CASKS=(
-    anaconda #Continuum Analytics Anaconda
-    ccleaner #Piriform CCleaner
-    db-browser-for-sqlite #DB Browser for SQLite
-    deluge #Deluge - BitTorrent client
+BREW_CASKS=(
+    #db-browser-for-sqlite #DB Browser for SQLite
+    #deluge #Deluge - BitTorrent client
     docker #Docker Desktop
     dotnet-sdk #.NET SDK
     drawio #draw.io Desktop
-    eclipse-java #Eclipse IDE for Java Developers
+    #eclipse-java #Eclipse IDE for Java Developers
     enpass #Enpass
     firefox #Mozilla Firefox
-    github #GitHub Desktop
-    google-chrome #Google Chrome
-    gpg-suite-pinentry #GPG Suite Pinentry
-    keka #Keka - File archiver
-    knime #KNIME Analytics Platform
-    mactex #MacTeX - Full TeX Live distribution with GUI applications
-    microsoft-remote-desktop #Microsoft Remote Desktop
-    miniconda #Continuum Analytics Miniconda
-    merlin-project #Merlin Project
-    netbeans #NetBeans IDE ########problems
-    oracle-jdk-javadoc #Oracle Java Standard Edition Development Kit Documentation
-    orange #Orange - Component-based data mining software
+    #github #GitHub Desktop
+    #google-chrome #Google Chrome
+    #gpg-suite-pinentry #GPG Suite Pinentry
+    #keka #Keka - File archiver
+    #knime #KNIME Analytics Platform
+    #mactex #MacTeX - Full TeX Live distribution with GUI applications
+    #microsoft-remote-desktop #Microsoft Remote Desktop
+    #miniconda #Continuum Analytics Miniconda
+    #merlin-project #Merlin Project
+    #oracle-jdk-javadoc #Oracle Java Standard Edition Development Kit Documentation
+    #orange #Orange - Component-based data mining software
     openrefine #OpenRefine - data cleanup and transformation to other formats
     projectlibre #ProjectLibre
-    pycharm-ce #Jetbrains PyCharm Community Edition
-    rapidminer-studio #RapidMiner Studio
+    #pycharm-ce #Jetbrains PyCharm Community Edition
+    #rapidminer-studio #RapidMiner Studio
     spectacle #Spectacle - Move and resize windows with ease
     sublime-text #Sublime Text
-    termius #Termius
+    #termius #Termius
     vagrant #Vagrant
     virtualbox #Oracle VirtualBox
-    visual-studio-code #Microsoft Visual Studio Code
+    #visual-studio-code #Microsoft Visual Studio Code
     vlc #VLC media player
     weka #Weka
     xmind #XMind - Mind mapping and brainstorming tool
 )
 
+# Install required packages
+PACKAGES=(
+    build-essential
+    curl
+    git
+    wget
+    vim
+    tmux
+    htop
+    openjdk-11-jdk
+    python3-pip
+    docker.io
+    docker-compose
+    postgresql
+    nginx
+    nodejs
+    npm
+    deluge
+    vagrant
+    virtualbox
+)
+
+echo "Installing base packages..."
+for package in "${PACKAGES[@]}"; do
+    sudo apt install -y $package
+done
+
 echo ""
 echo "Installing packages ... "
-brew install ${PACKAGES[@]}
+brew install ${BREW_PACKAGES[@]}
 
 echo ""
 echo "Set Eclair workstation wallpaper"
 git clone https://github.com/ctinnil/Eclair.git
 cp Eclair/lockscreen.jpeg ~/Pictures/lockscreen.jpeg
-path_of_logo=$(echo ~/Pictures/lockscreen.jpeg)
-osascript -e 'tell application "Finder" to set desktop picture to POSIX file "'"$path_of_logo"'"'
+gsettings set org.gnome.desktop.background picture-uri ~/Pictures/lockscreen.jpeg
+gsettings set org.gnome.desktop.screensaver picture-uri ~/Pictures/lockscreen.jpeg
 
 echo ""
 echo "Installing cask apps ... "
-brew install --cask ${CASKS[@]}
+#sudo snap install ${BREW_CASKS[@]}
 
-echo ""
-echo "Elastic Stack setup ... "
-brew tap elastic/tap
-brew install elastic/tap/elasticsearch-full
-brew services start elastic/tap/elasticsearch-full
-sleep 60 && curl http://localhost:9200
-brew install elastic/tap/kibana-full
-brew services start elastic/tap/kibana-full
-#To access Kibana go to :::> http://localhost:5601
+#sudo apt install deluge -y
+sudo snap install drawio
+sudo snap install docker
+sudo snap install dotnet-sdk --classic
+sudo snap install enpass
+sudo snap install firefox
+sudo snap install openrefine
+sudo snap install projectlibre
+sudo snap install netbeans --classic
+sudo snap install spectacle
+sudo snap install sublime-text --classic
+#sudo apt install vagrant -y
+#sudo apt install virtualbox -y
+sudo snap install vlc
+sudo snap install weka
+sudo snap install xmind
 
-echo ""
-echo "Installing Xcode and Swift Playgrounds ... "
-#xcode
-xcode=$(mas search xcode | head -n1 | tr -s " " | cut -f2 -d" " )
-mas install $xcode
-#swift
-swift=$(mas search swift | head -n1 | tr -s " " | cut -f2 -d" " )
-mas install $swift
+# Setup Docker without sudo
+#sudo groupadd docker
+#sudo usermod -aG docker $USER
+#newgrp docker
 
-echo ""
-echo "npm package manager installing and configuring ... "
-mkdir ~/.nvm
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
-source ~/.bash_profile
-nvm_ver=$(nvm ls-remote | grep "Latest LTS" | tail -1 |  awk '{print $1}')
-nvm install $nvm_ver
-
-npm install -g npm
-npm i -g dependency-cruiser
-
-echo ""
-echo "Installing Python packages ... "
-python3 -m pip install --upgrade setuptools
-python3 -m pip install --upgrade pip
-
+# Python packages
+echo "Installing Python packages..."
 PYTHON_PACKAGES=(
     beautifulsoup4
     cntk
@@ -296,36 +284,26 @@ PYTHON_PACKAGES=(
     weka
 )
 
-sudo python3 -m pip install -U ${PYTHON_PACKAGES[@]}
-git clone git://github.com/pybrain/pybrain.git
-sudo python3 -m pip install -U -e pybrain
+for pkg in "${PYTHON_PACKAGES[@]}"; do
+    pip3 install $pkg
+done
 
-echo ""
-echo "Installing Ruby gems ... "
-RUBY_GEMS=(
-    bundler
-    filewatcher
-    cocoapods
-)
-sudo gem install ${RUBY_GEMS[@]}
+# NVM and Node.js
+echo "Setting up NVM and installing Node.js..."
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+nvm install node # Install latest Node.js version
 
-echo ""
-echo "Initialize Docker containers ... "
-git clone https://github.com/IBM/fhe-toolkit-macos.git
-cd fhe-toolkit-macos/dependencies/
-./setup.sh
-cd ../..
-
-#check installs
-brew doctor 
+# Additional software and configurations can be added here
 
 echo ""
 echo "Cleaning up..."
+sudo apt autoremove -y
+sudo apt autoclean -y
+brew doctor
+brew autoremove
 brew cleanup
 
-# enable terminal autocomplet 
-set show-all-if-ambiguous on
-
 echo ""
-echo "Setup complete !!! Please restart your system."
-echo ""
+echo "Setup complete! Please restart your computer."
