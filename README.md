@@ -25,6 +25,19 @@
 
 ---
 
+## Spread the Word 
+
+We’d love your help to grow **Eclair**!  
+If you find this project helpful, please share it with your friends, colleagues, or communities—on social media, newsletters, or blogs. Every mention helps us reach more people who might benefit from it.
+
+You can also support the project directly and [![Support Eclair](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-yellow?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/ctinnil)
+
+ —it means a lot and helps keep everything running!
+
+Thank you for being part of our journey and for helping **Eclair** thrive 🚀
+
+---
+
 ECLAIR is an artificial intelligence research and experimentation macOS-based workstation developed for data acquisition, processing, cleaning, integrating and enrichment, applying machine and deep learning techniques, and findings visualization and interpretation. 
 
 The construction of the framework is base on the data science lifecycle, as follows:
